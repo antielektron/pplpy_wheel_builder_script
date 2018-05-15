@@ -13,7 +13,7 @@ Currently it only runs on debian based distributions because it's using `apt` to
 
 ### Download
 
-* Precompiled wheels for the amd64 architecture (linux) and the builder script itself can be found [here](https://the-cake-is-a-lie.net/gogs/jonas/python_polyhedron/releases)
+* Precompiled wheels for the amd64 architecture (linux) and the builder script itself can be found [here](https://the-cake-is-a-lie.net/gogs/jonas/pplpy_wheel_builder/releases)
 
 ### How to use the script
 
