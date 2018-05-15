@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index cbf04dc..4df72fb 100755
+--- a/setup.py
++++ b/setup.py
+@@ -96,7 +96,6 @@ setup(
+     packages=['ppl'],
+     package_dir={'ppl': 'ppl'},
+     package_data={'ppl': ['*.pxd', '*.h', '*.hh']},
+-    install_requires=['Cython', 'cysignals', 'gmpy2'],  # For pip install, pip can't read setup_requires
+     include_dirs=['ppl'] + sys.path,
+     ext_modules=extensions,
+     classifiers=[
