@@ -9,6 +9,19 @@ WHEEL_DEPS_PATH="${SCRIPTPATH}/pplpy_wheel_deps"
 
 WHEELS_PATH="${SCRIPTPATH}/generated_wheels"
 
+if [ -z "$PIP_FLAGS" ]
+then
+    PIP_FLAGS="--user" 
+fi
+
+if [ -z "$PIP_INSTALL_FLAGS" ]
+then
+    PIP_INSTALL_FLAGS="--prefix=$HOME/.local"
+fi
+
+echo $PIP_FLAGS
+echo $PIP_INSTALL_FLAGS
+
 function lineprint {
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
 }
@@ -219,7 +232,7 @@ pip_status=$?
 
 if [ $pip_status -ne 0 ]
 then
-    $PYTHON_PIP install wheel --user
+    $PYTHON_PIP install $PIP_FLAGS wheel
 else
     message "found existing wheel in: $($PYTHON_PIP show wheel | grep Location | awk '{print $2}')"  
 fi
@@ -251,7 +264,7 @@ set_action "compile, build_wheel and install GMPY $GMPY_VERSION with git"
 export CFLAGS="-I~/local/include/ -L~/local/lib/ $CFLAGS"
 
 perform_and_exit /usr/bin/env $PYTHON_ENV setup.py bdist_wheel
-perform_and_exit /usr/bin/env $PYTHON_ENV setup.py install --prefix=$HOME/.local
+perform_and_exit /usr/bin/env $PYTHON_ENV setup.py install $PIP_INSTALL_FLAGS
 
 confirm_action
 
@@ -264,7 +277,7 @@ pip_status=$?
 
 if [ $pip_status -ne 0 ]
 then
-    $PYTHON_PIP install cython --user
+    $PYTHON_PIP install $PIP_FLAGS cython
 else
     message "found existing cython in: $($PYTHON_PIP show cython | grep Location | awk '{print $2}')"  
 fi
@@ -274,7 +287,7 @@ pip_status=$?
 
 if [ $pip_status -ne 0 ]
 then
-    $PYTHON_PIP install cysignals --user
+    $PYTHON_PIP install $PIP_FLAGS cysignals
 else
     message "found existing cysignals in: $($PYTHON_PIP show cysignals | grep Location | awk '{print $2}')"
 fi
