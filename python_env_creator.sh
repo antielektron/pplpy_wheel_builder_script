@@ -35,7 +35,7 @@ function perform {
 }
 
 function perform_and_exit {
-    perform "$@" || exit
+    perform "$@" || exit -1
 }
 
 # --------------------------------------------
@@ -70,6 +70,6 @@ perform_and_exit make install
 confirm_action
 set_action "create virtual environment in ~/envs/python$PYTHON_VERSION"
 
-perform_and_exit virtualenv-3 --python=$PYTHON_DIR/bin/python$PYTHON_VERSION_MAJOR_MINOR $HOME/envs/python$PYTHON_VERSION
+perform_and_exit virtualenv --python=$PYTHON_DIR/bin/python$PYTHON_VERSION_MAJOR_MINOR $HOME/envs/python$PYTHON_VERSION
 
 confirm_action

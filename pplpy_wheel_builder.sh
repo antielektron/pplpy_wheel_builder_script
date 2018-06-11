@@ -41,7 +41,7 @@ function perform {
 }
 
 function perform_and_exit {
-    perform "$@" || exit
+    perform "$@" || exit -1
 }
 
 # some variables and tags for Versions (using git or mecurial tags here!)
