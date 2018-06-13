@@ -7,7 +7,7 @@ SCRIPTPATH=`dirname $SCRIPT`
 
 WHEEL_DEPS_PATH="${SCRIPTPATH}/pplpy_wheel_deps"
 
-WHEELS_PATH="${SCRIPTPATH}/generated_wheels"
+: "${WHEELS_PATH:=${SCRIPTPATH}/generated_wheels}"
 
 if [ -z "$PIP_FLAGS" ]
 then
@@ -58,15 +58,15 @@ function perform_and_exit {
 }
 
 # some variables and tags for Versions (using git or mecurial tags here!)
-GMP_VERSION="gmp-6.1.0"
-PPL_VERSION="1.2"       # not used, since the ppl repo does not declares git-tags for their published versions (?!?)
-MPFR_VERSION="4.0.1"
-MPC_VERSION="1.1.0"
-GMPY_VERSION="gmpy2-2.1.0a1"
-PPLPY_VERSION="0.7"
+: "${GMP_VERSION:=gmp-6.1.0}"
+: "${PPL_VERSION:=1.2}" # not used, since the ppl repo does not declares git-tags for their published versions (?!?)
+: "${MPFR_VERSION:=4.0.1}"
+: "${MPC_VERSION:=1.1.0}"
+: "${GMPY_VERSION:=gmpy2-2.1.0a1}"
+: "${PPLPY_VERSION:=0.7}"
 
-PYTHON_ENV="python3"
-PYTHON_PIP="pip3"
+: "${PYTHON_ENV:=python3}"
+: "${PYTHON_PIP:=pip3}"
 
 # setting up our environment:
 export LD_LIBRARY_PATH=~/local/lib:~/.local/lib/:$LD_LIBRARY_PATH
@@ -282,7 +282,7 @@ else
     message "found existing cython in: $($PYTHON_PIP show cython | grep Location | awk '{print $2}')"  
 fi
 
-pip3 show cysignals
+$PYTHON_PIP show cysignals
 pip_status=$?
 
 if [ $pip_status -ne 0 ]
@@ -355,5 +355,5 @@ perform_and_exit cp ~/src/gmpy/dist/*.whl "$WHEELS_PATH/"
 
 confirm_action
 
-message "...and we're done!\nGenerated wheels can be found in $WHEEL_DEPS_PATH\nTo install a wheel file just run: $PYTHON_PIP install wheel_file.whl --user\nHave a nice day :-)"
+message "...and we're done!\nGenerated wheels can be found in $WHEELS_PATH\nTo install a wheel file just run: $PYTHON_PIP install wheel_file.whl --user\nHave a nice day :-)"
 

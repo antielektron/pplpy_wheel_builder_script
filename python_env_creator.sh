@@ -40,6 +40,8 @@ function perform_and_exit {
 
 # --------------------------------------------
 
+: "${PYTHON_MAJOR_VERSION:=3}"
+
 if [ $# -eq 0 ]
 then
     echo "missing arguments. Usage: $0 <PYTHON_VERSION>"
@@ -72,9 +74,9 @@ confirm_action
 set_action "test for virtualenv"
 
 # testing for virtualenv-3
-if [ `which virtualenv-3` ]
+if [ `which virtualenv-$PYTHON_MAJOR_VERSION` ]
 then
-    VIRTUALENV_BIN=`which virtualenv-3`
+    VIRTUALENV_BIN=`which virtualenv-$PYTHON_MAJOR_VERSION`
 else
     if [ `which virtualenv` ]
     then
