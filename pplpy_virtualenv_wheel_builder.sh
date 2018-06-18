@@ -67,8 +67,8 @@ set_action "running pplpy_wheel_builder in expected environment"
 export PIP_FLAGS=" "
 export PIP_INSTALL_FLAGS=" "
 
-export PYTHON_ENV:=python
-export PYTHON_PIP:=pip
+export PYTHON_ENV=python
+export PYTHON_PIP=pip
 export WHEELS_PATH="${SCRIPTPATH}/generated_wheels_$PYTHON_VERSION/"
 
 perform_and_exit source $HOME/envs/python$PYTHON_VERSION/bin/activate
