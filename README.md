@@ -86,7 +86,7 @@ the script [pplpy_virtualenv_wheel_builder.sh](pplpy_virtualenv_wheel_builder.sh
   ./pplpy_virtualenv_wheel_builder.sh 2.7.15
   ```
 
-**NOTE**: [virtualenv](apt://virtualenv) has to be installed before (using your favorite package manager)
+**NOTE**: [virtualenv](apt://virtualenv) has to be installed before (using your favourite package manager)
 
 ## overwritable system variables:
 
