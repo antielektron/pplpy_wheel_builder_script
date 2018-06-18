@@ -74,7 +74,7 @@ Currently it only runs on debian and redhat/fedora based distributions because i
 
 ## Running the script for different python versions
 
-the script [pplpy_virtualenv_wheel_builder.sh]([pplpy_virtualenv_wheel_builder.sh]) creates a virtual environment for a given python version (full version number!) in `~/envs` and generates the wheels using that python environment. Usage:
+the script [pplpy_virtualenv_wheel_builder.sh](pplpy_virtualenv_wheel_builder.sh) creates a virtual environment for a given python version (full version number!) in `~/envs` and generates the wheels using that python environment. Usage:
 
 ```bash
 ./pplpy_virtualenv_wheel_builder.sh $PYTHON_VERSION
@@ -103,3 +103,10 @@ the script [pplpy_virtualenv_wheel_builder.sh]([pplpy_virtualenv_wheel_builder.s
 | `PYTHON_PIP`            | `pip3`                            | not available when using `pplpy_virtualenv_wheel_builder.sh` |
 | ` PYTHON_MAJOR_VERSION` | `3`                               | only used for searching for virtualenv binary (should only be overwritten two `2` if virtualenv binary only exists as `virtualenv-2`, at least not the case on ubuntu and fedora) |
 
+* so as an example: for using pplpy in version `0.6` just run
+
+  ```bash
+  export PPLPY_VERSION=0.6
+  ```
+
+  before running [pplpy_wheel_builder.sh](pplpy_wheel_builder.sh) or [pplpy_virtualenv_wheel_builder.sh](pplpy_virtualenv_wheel_builder.sh)
