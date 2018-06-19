@@ -65,7 +65,7 @@ perform_and_exit cd Python-$PYTHON_VERSION
 confirm_action
 set_action "compile python v$PYTHON_VERSION"
 
-perform_and_exit ./configure --prefix=$HOME/envs/python_homes/python$PYTHON_VERSION/
+perform_and_exit ./configure --prefix=$HOME/envs/python_homes/python$PYTHON_VERSION/ --enable-unicode=ucs4
 perform_and_exit make -j4
 perform_and_exit make install
 
