@@ -40,8 +40,6 @@ Currently it only runs on debian and redhat/fedora based distributions because i
     sudo -H pip3 install cython cysignals 
     ```
 
-    
-
 * run
 
   ```bash
@@ -53,8 +51,6 @@ Currently it only runs on debian and redhat/fedora based distributions because i
     ```
     sudo -H pip3 install *.whl
     ```
-
-    
 
 * **NOTE**: you have to adjust your `LD_LIBRARY_PATH` otherwise the installed libraries are not found at runtime. To do this add the line
 
@@ -110,3 +106,27 @@ the script [pplpy_virtualenv_wheel_builder.sh](pplpy_virtualenv_wheel_builder.sh
   ```
 
   before running [pplpy_wheel_builder.sh](pplpy_wheel_builder.sh) or [pplpy_virtualenv_wheel_builder.sh](pplpy_virtualenv_wheel_builder.sh)
+
+
+
+## Troubleshooting
+
+* if the script responds`error : _ssl.c:510: EOF occurred in violation of protocol`  during the installation of GMP, then there is an unpatched Bug in the `hg` command of [mercurial](https://www.mercurial-scm.org/) (happens on Ubuntu 14.04). A workaround is either to install a newer version manually or [download](https://gmplib.org/) GMP and then compile it manually by running the following commands inside the extracted folder:
+
+  ```bash
+  ./configure --prefix=`realpath ~/local` --enable-cxx --enable-fat
+  make -j4
+  make install
+  ```
+
+  then you can run the script [pplpy_wheel_builder.sh](pplpy_wheel_builder.sh) again and it will detect that gmp is already installed
+
+* older Versions of Python (e.g. Python3.4) need older Versions of the libssl-header. You can install them on ubuntu with:
+
+  ```bash
+  sudo apt install libssl1.0-dev
+  ```
+
+
+
+
