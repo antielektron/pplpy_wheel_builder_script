@@ -92,12 +92,12 @@ the script [pplpy_virtualenv_wheel_builder.sh](pplpy_virtualenv_wheel_builder.sh
 | `PPL_VERSION`           | `1.2`                             | ignored so far, since version tags in git repo are missing (last stable is used instead) |
 | `MPFR_VERSION`          | `4.0.1`                           |                                                              |
 | `MPC_VERSION`           | `1.1.0`                           |                                                              |
-| `GMPY_VERSION`          | `gmpy2-2.1.0a1`                   |                                                              |
+| `GMPY_VERSION`          | `gmpy2-2.1a4`                     |                                                              |
 | `PPLPY_VERSION`         | `0.7`                             |                                                              |
 | `WHEELS_PATH`           | `${SCRIPTPATH}/generated_wheels}` | folder where the generated wheels will be stored             |
 | `PYTHON_ENV`            | `python3`                         | not available when using `pplpy_virtualenv_wheel_builder.sh` |
 | `PYTHON_PIP`            | `pip3`                            | not available when using `pplpy_virtualenv_wheel_builder.sh` |
-| ` PYTHON_MAJOR_VERSION` | `3`                               | only used for searching for virtualenv binary (should only be overwritten two `2` if virtualenv binary only exists as `virtualenv-2`, at least not the case on ubuntu and fedora) |
+| `PYTHON_MAJOR_VERSION`  | `3`                               | only used for searching for virtualenv binary (should only be overwritten two `2` if virtualenv binary only exists as `virtualenv-2`, at least not the case on ubuntu and fedora) |
 
 * so as an example: for using pplpy in version `0.6` just run
 

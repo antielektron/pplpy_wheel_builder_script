@@ -62,7 +62,7 @@ function perform_and_exit {
 : "${PPL_VERSION:=1.2}" # not used, since the ppl repo does not declares git-tags for their published versions (?!?)
 : "${MPFR_VERSION:=4.0.1}"
 : "${MPC_VERSION:=1.1.0}"
-: "${GMPY_VERSION:=gmpy2-2.1.0a1}"
+: "${GMPY_VERSION:=gmpy2-2.1a4}"
 : "${PPLPY_VERSION:=0.7}"
 
 : "${PYTHON_ENV:=python3}"
@@ -254,11 +254,13 @@ perform_and_exit cd gmpy/
 perform_and_exit git checkout $GMPY_VERSION
 
 confirm_action
-set_action "patching gmpy's setup.py to make it compatible with python-wheel"
 
-perform_and_exit git apply < $SCRIPTPATH/gmpy.patch
+# this patch is only necessary for gmpy version older than 2.1.0a4
+# set_action "patching gmpy's setup.py to make it compatible with python-wheel"
 
-confirm_action
+# perform_and_exit git apply < $SCRIPTPATH/gmpy.patch
+
+# confirm_action
 set_action "compile, build_wheel and install GMPY $GMPY_VERSION with git"
 
 export CFLAGS="-I~/local/include/ -L~/local/lib/ $CFLAGS"
